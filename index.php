@@ -36,3 +36,26 @@ $languages = Language::get_accepted_languages();
 foreach ($languages as $key => $value) {
     echo "{$key} => {$value}<br><br>";
 }
+
+/* Page précédemment visitée */
+if(isset($_SERVER['HTTP_REFERER'])) {
+    $pagePrécédente = $_SERVER['HTTP_REFERER'];
+    echo "<b>Page précédemment visitée : </b>$pagePrécédente";
+}
+else
+{
+    echo 'HTTP_REFERER pas envoyé par le navigateur !';
+}
+
+/* Résolution d'écran */
+echo '<br><br><b>Résolution de l\'écran : </b>';
+session_start();
+if (isset($_SESSION['screen_width']) AND isset($_SESSION['screen_height'])) {
+    echo $_SESSION['screen_width'] . 'x' . $_SESSION['screen_height'];
+} else if (isset($_REQUEST['width']) AND isset($_REQUEST['height'])) {
+    $_SESSION['screen_width'] = $_REQUEST['width'];
+    $_SESSION['screen_height'] = $_REQUEST['height'];
+    header('Location: ' . $_SERVER['PHP_SELF']);
+} else {
+    echo '<script type="text/javascript">window.location = "' . $_SERVER['PHP_SELF'] . '?width="+screen.width+"&height="+screen.height;</script>';
+}
