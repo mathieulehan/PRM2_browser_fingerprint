@@ -56,6 +56,15 @@ if (isset($_SESSION['screen_width']) AND isset($_SESSION['screen_height'])) {
     $_SESSION['screen_width'] = $_REQUEST['width'];
     $_SESSION['screen_height'] = $_REQUEST['height'];
     header('Location: ' . $_SERVER['PHP_SELF']);
-} else {
-    echo '<script type="text/javascript">window.location = "' . $_SERVER['PHP_SELF'] . '?width="+screen.width+"&height="+screen.height;</script>';
 }
+
+/* Viewport (résolution affichée du site) */
+echo '<br><br><b>Hauteur et largeur affichables : </b><br>';
+$hautScrollbar = '<script type="text/javascript">document.write(window.innerHeight);</script>';
+$largScrollbar = '<script type="text/javascript">document.write(window.innerWidth);</script>';
+$hautNoScrollbar = '<script type="text/javascript">document.write(document.documentElement.clientHeight);</script>';
+$largNoScrollbar = '<script type="text/javascript">document.write(document.documentElement.clientWidth);</script>';
+echo "Hauteur disponible sans ascenseur : $hautScrollbar<br>";
+echo "Largeur disponible sans ascenseur : $largScrollbar<br>";
+echo "Hauteur disponible avec ascenseur : $hautNoScrollbar<br>";
+echo "Largeur disponible avec ascenseur : $largNoScrollbar<br>";

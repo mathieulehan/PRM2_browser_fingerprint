@@ -24,6 +24,12 @@ fr_FR => 0.8
 
 fr => 0.7
 
-Page précédemment visitée : http://localhost/index.php
+HTTP_REFERER pas envoyé par le navigateur !
 
 Résolution de l'écran : 1536x864
+
+Hauteur et largeur affichables :
+Hauteur disponible sans ascenseur : 792
+Largeur disponible sans ascenseur : 1536
+Hauteur disponible avec ascenseur : 792
+Largeur disponible avec ascenseur : 1536
