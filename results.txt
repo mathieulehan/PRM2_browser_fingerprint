@@ -1,35 +1,14 @@
-fonction native get_browser :
-
-stdClass Object ( [browser_name_regex] => ~^.*$~ [browser_name_pattern] => * [browser] => Default Browser [version] => 0 [majorver] => 0 [minorver] => 0 [platform] => unknown [alpha] => [beta] => [win16] => [win32] => [win64] => [frames] => 1 [iframes] => [tables] => 1 [cookies] => [backgroundsounds] => [cdf] => [vbscript] => [javaapplets] => [javascript] => [activexcontrols] => [isbanned] => [ismobiledevice] => [issyndicationreader] => [crawler] => [cssversion] => 0 [supportscss] => [aol] => [aolversion] => 0 )
-
 Google Chrome
-
-Nom, version, OS et userAgent du navigateur
-
 nom => safari
-
 version => 537.36
-
 platform => windows
-
 userAgent => mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/79.0.3945.130 safari/537.36
-
-Langages acceptés avec versions
-
 en => 0.9
-
 en_US => 0.9
-
 fr_FR => 0.8
-
 fr => 0.7
-
-HTTP_REFERER pas envoyé par le navigateur !
-
-Résolution de l'écran : 1536x864
-
-Hauteur et largeur affichables :
-Hauteur disponible sans ascenseur : 792
-Largeur disponible sans ascenseur : 1536
-Hauteur disponible avec ascenseur : 792
-Largeur disponible avec ascenseur : 1536
+1536x864
+792
+1536
+792
+1536
