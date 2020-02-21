@@ -79,7 +79,6 @@ else {
         $stmt->execute();
     }
     else {
-        print_r($raws);
         $userId = $raws["user_id"];
         $oldVisitsCount = $raws["visits_count"];
         $oldVisitsCount++;
