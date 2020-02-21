@@ -4,6 +4,12 @@ include("Browser.php");
 include("Language.php");
 include("db.php");
 
+?>
+
+    <a href="stats.php"><button type="button">Afficher les statistiques</button></a>
+
+<?php
+
 $fingerprint_raw = "";
 
 if(strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE)
@@ -60,22 +66,28 @@ if($hash == null) {
     $stmt->execute();
 }
 else {
-    $sql = "SELECT first_visit FROM fingerprint WHERE fingerprint_raw = ?";
+    $sql = "SELECT user_id, first_visit, latest_visit, visits_count FROM fingerprint WHERE fingerprint_raw = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$fingerprint_raw]);
     $raws = $stmt->fetch();
 
     if ($raws == null) {
-        $sql = "INSERT INTO fingerprint (fingerprint_raw, fingerprint_hash, first_visit) VALUES (:fingerprint_raw, :fingerprint_hash, CURRENT_TIMESTAMP)";
+        $sql = "INSERT INTO fingerprint (fingerprint_raw, fingerprint_hash, latest_visit) VALUES (:fingerprint_raw, :fingerprint_hash, CURRENT_TIMESTAMP)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':fingerprint_raw', $fingerprint_raw);
         $stmt->bindParam(':fingerprint_hash', $fingerprint_hash);
         $stmt->execute();
     }
     else {
-        $derniereVisite = array_values($raws)[0];
-        echo("<br><br>Vous êtes déjà venu sur ce site le : $derniereVisite ");
+        print_r($raws);
+        $userId = $raws["user_id"];
+        $oldVisitsCount = $raws["visits_count"];
+        $oldVisitsCount++;
+        $sql = "UPDATE fingerprint SET visits_count='$oldVisitsCount' WHERE user_id='$userId'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $premiereVisite = $raws["first_visit"];
+        $derniereVisite = $raws["latest_visit"];
+        echo("<br><br>Votre dernière connexion est le : $derniereVisite <br>Votre première connexion remonte à : $premiereVisite");
     }
 }
-
-echo '<img src="canard.jpg" alt="coin">';

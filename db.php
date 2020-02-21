@@ -1,3 +1,5 @@
+<a href="index.php"><button type="button">Accueil</button></a>
+
 <?php
 $host = 'mysql-big.alwaysdata.net';
 $db   = 'big_big';
